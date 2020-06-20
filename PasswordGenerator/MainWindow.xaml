@@ -1,0 +1,39 @@
+﻿<Window x:Class="PasswordGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="10,138,0,0" PreviewTextInput="Text_prompt"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="287"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="35"
+                   Margin="10,375,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="287"/>
+        <Button x:Name="button" Content="Сохранить" HorizontalAlignment="Left" 
+                Height="35" Margin="596,375,0,0" VerticalAlignment="Top" Width="156"/>
+        <Button x:Name="button1" Content="Генерация" HorizontalAlignment="Left" Click="Generate"
+                Margin="596,176,0,0" VerticalAlignment="Top" Width="118" Height="38"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="178">
+            <MenuItem Header="Type prompt" >
+                <MenuItem Header="Name" Click="Text_string"></MenuItem>
+                <MenuItem Header="Data" Click="Text_integer"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Size pasword" >
+                <MenuItem Header="4" Click="Size_4"></MenuItem>
+                <MenuItem Header="8" Click="Size_8"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Slider Grid.Column="0" 
+                Minimum="1"  
+                TickPlacement="BottomRight" TickFrequency="1"
+                Value="1"  IsSnapToTickEnabled="True"  
+                 PreviewMouseUp="Vistex_slider"
+                VerticalAlignment="Center" Name="slValue" Margin="10,73,473.6,312" Height="35"  />
+        <Label Content="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
+               HorizontalAlignment="Center"  FontWeight="DemiBold"
+               Margin="290,30,473.6,0" Name="slider"
+               VerticalAlignment="Top" Height="25" Width="30"/>
+    </Grid>
+</Window>
