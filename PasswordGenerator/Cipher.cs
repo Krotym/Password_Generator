@@ -63,6 +63,7 @@ namespace PasswordGenerator
             }
              
 
+
             //замена
             for (int i = 0; i < change; i++)
             {

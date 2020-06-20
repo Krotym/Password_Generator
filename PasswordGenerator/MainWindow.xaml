@@ -14,7 +14,7 @@
         <Button x:Name="button" Content="Сохранить" HorizontalAlignment="Left" 
                 Height="35" Margin="596,375,0,0" VerticalAlignment="Top" Width="156"/>
         <Button x:Name="button1" Content="Генерация" HorizontalAlignment="Left" Click="Generate"
-                Margin="596,176,0,0" VerticalAlignment="Top" Width="118" Height="38"/>
+                Margin="566,160,0,0" VerticalAlignment="Top" Width="118" Height="38"/>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="178">
             <MenuItem Header="Type prompt" >
                 <MenuItem Header="Name" Click="Text_string"></MenuItem>

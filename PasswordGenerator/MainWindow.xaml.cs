@@ -68,6 +68,9 @@ namespace PasswordGenerator
             slValue.Maximum = size;
         }
 
+
+
+
         public void Vistex_slider(object sender, RoutedEventArgs e)
         {
             slValue.Maximum = size;
