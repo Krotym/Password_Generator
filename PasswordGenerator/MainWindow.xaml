@@ -5,36 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="10,138,0,0" PreviewTextInput="Text_prompt"
-                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="287"/>
+        Title="MainWindow" Height="300" Width="500">
+    <Grid Background="Khaki">
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="10,147,0,0" PreviewTextInput="Text_prompt"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="35"
-                   Margin="10,375,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="287"/>
+                   Margin="10,197,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="310"/>
         <Button x:Name="button" Content="Сохранить" HorizontalAlignment="Left" 
-                Height="35" Margin="596,375,0,0" VerticalAlignment="Top" Width="156"/>
+                Height="35" Margin="347,197,0,0" VerticalAlignment="Top" Width="118" Click="Save"/>
         <Button x:Name="button1" Content="Генерация" HorizontalAlignment="Left" Click="Generate"
-                Margin="566,160,0,0" VerticalAlignment="Top" Width="118" Height="38"/>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="178">
+                Margin="347,147,0,0" VerticalAlignment="Top" Width="118" Height="30"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="310">
             <MenuItem Header="Type prompt" >
                 <MenuItem Header="Name" Click="Text_string"></MenuItem>
+                <MenuItem Header="Surname" Click="Text_string1"></MenuItem>
                 <MenuItem Header="Data" Click="Text_integer"></MenuItem>
+                <MenuItem Header="Other" Click="Text_input"></MenuItem>
             </MenuItem>
             <MenuItem Header="Size pasword" >
                 <MenuItem Header="4" Click="Size_4"></MenuItem>
                 <MenuItem Header="8" Click="Size_8"></MenuItem>
+                <MenuItem Header="16" Click="Size_16"></MenuItem>
+                <MenuItem Header="Other" Click="Size_input"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Use special characters" >
+                <CheckBox Content="#"  Checked="Chaptter1" Unchecked="UnChaptter1"></CheckBox>
+                <CheckBox Content="?"  Checked="Chaptter2" Unchecked="UnChaptter2"></CheckBox>
+                <CheckBox Content="!"  Checked="Chaptter9" Unchecked="UnChaptter9"></CheckBox>
+                <CheckBox Content="+"  Checked="Chaptter3" Unchecked="UnChaptter3"></CheckBox>
+                <CheckBox Content="="  Checked="Chaptter8" Unchecked="UnChaptter8"></CheckBox>
+                <CheckBox Content="-"  Checked="Chaptter5" Unchecked="UnChaptter5"></CheckBox> 
+                <CheckBox Content="*"  Checked="Chaptter4" Unchecked="UnChaptter4"></CheckBox>
+                <CheckBox Content="$"  Checked="Chaptter6" Unchecked="UnChaptter6"></CheckBox>
+                <CheckBox Content="@"  Checked="Chaptter7" Unchecked="UnChaptter7"></CheckBox>
+                
             </MenuItem>
         </Menu>
         <Slider Grid.Column="0" 
-                Minimum="1"  
+                Minimum="0"  Maximum="4"
                 TickPlacement="BottomRight" TickFrequency="1"
-                Value="1"  IsSnapToTickEnabled="True"  
+                Value="0"  IsSnapToTickEnabled="True"  
                  PreviewMouseUp="Vistex_slider"
-                VerticalAlignment="Center" Name="slValue" Margin="10,73,473.6,312" Height="35"  />
+                VerticalAlignment="Center" Name="slValue" Margin="10,83,173.6,152.4" Height="35"  />
         <Label Content="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
                HorizontalAlignment="Center"  FontWeight="DemiBold"
-               Margin="290,30,473.6,0" Name="slider"
-               VerticalAlignment="Top" Height="25" Width="30"/>
-        <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Margin="385,126,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" />
+               Margin="292,53,173.6,0" Name="slider"
+               VerticalAlignment="Top" Height="25" Width="28"/>
+        <CheckBox x:Name="checkBox" Content="Shuffle characters" HorizontalAlignment="Left"
+                  Margin="10,118,0,0" VerticalAlignment="Top" Checked="checkBox_Checked"  Unchecked="checkBox_UNChecked"/>
+
     </Grid>
 </Window>

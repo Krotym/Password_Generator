@@ -49,7 +49,7 @@ namespace PasswordGenerator
             return pos;
         }
 
-        public void cryptic(string str, int change, int size, bool check)
+        public void cryptic(string str, int change, int size, bool check, string[] chapt)
         {
             Random rand = new Random();
             char[] FirstWord = str.ToArray(), TwoWord = str.ToArray();
@@ -72,7 +72,6 @@ namespace PasswordGenerator
             {
                 length = size;
             }
-
             //перемешивание
             if (check == true)
             {
@@ -86,7 +85,6 @@ namespace PasswordGenerator
                 }
 
             }
-
             //замена
             for (int i = 0; i < change; i++)
             {
@@ -136,6 +134,16 @@ namespace PasswordGenerator
                 else
                     FirstWord[c] = Char.Parse(choic);
             }
+            // замена на спец символы
+            for (int i = 0; i < chapt.Length; i++)
+            {
+                if (chapt[i] != "")
+                {
+                    int sch = rand.Next(0, length - 1);
+                    FirstWord[sch] = char.Parse(chapt[i]);
+                }
+            }
+            //финальная версия пароля
             for (int i = 0; i < length; i++)
             {
                 pass += FirstWord[i];
