@@ -49,26 +49,49 @@ namespace PasswordGenerator
             return pos;
         }
 
-        public void cryptic (string str,int change)
+        public void cryptic(string str, int change, int size, bool check)
         {
             Random rand = new Random();
-            char[] FirstWord= str.ToArray(), TwoWord = str.ToArray();
-            //перемешивание
-            for(int i=0;i<str.Length;i++)
+            char[] FirstWord = str.ToArray(), TwoWord = str.ToArray();
+            int length = str.Length;
+            // настройка длины пароля
+            if (length < size)
             {
-                char time = FirstWord[i];
-                int t = rand.Next(0, str.Length);
-                FirstWord[i] = FirstWord[t];
-                FirstWord[t] = time;
-            }
-             
+                int i = 0;
+                Array.Resize(ref FirstWord, FirstWord.Length + (size - length));
+                Array.Resize(ref TwoWord, TwoWord.Length + (size - length));
+                do
+                {
 
+                    FirstWord[length + i] = FirstWord[i];
+                    i++;
+                } while (length + i < size);
+                length = size;
+            }
+            else if (length > size)
+            {
+                length = size;
+            }
+
+            //перемешивание
+            if (check == true)
+            {
+
+                for (int i = 0; i < length; i++)
+                {
+                    char time = FirstWord[i];
+                    int t = rand.Next(0, length);
+                    FirstWord[i] = FirstWord[t];
+                    FirstWord[t] = time;
+                }
+
+            }
 
             //замена
             for (int i = 0; i < change; i++)
             {
                 string choic = "";
-                int c = rand.Next(0, str.Length-1);
+                int c = rand.Next(0, length - 1);
                 int pos = seach(FirstWord[c].ToString());
                 do
                 {
@@ -86,22 +109,23 @@ namespace PasswordGenerator
                         choic = hex[pos];
                     }
                 } while (choic == "");
-               
+
 
                 if (choic.Length == 2)
                 {
                     char[] ch = choic.ToArray();
                     TwoWord[c] = ch[0];
-                    if (c + 1 < str.Length)
-                    { TwoWord[c + 1] = ch[1];
-                        if (c+2 <=str.Length)
+                    if (c + 1 < length)
+                    {
+                        TwoWord[c + 1] = ch[1];
+                        if (c + 2 <= str.Length)
                         {
-                            for (int j = c + 2; j< str.Length; j++)
+                            for (int j = c + 2; j < length; j++)
                             {
                                 TwoWord[j] = FirstWord[j - 1];
 
                             }
-                            for (int k = 0; k < str.Length; k++)
+                            for (int k = 0; k < length; k++)
                             {
                                 FirstWord[k] = TwoWord[k];
 
@@ -109,10 +133,10 @@ namespace PasswordGenerator
                         }
                     }
                 }
-                else    
-                FirstWord[c] = Char.Parse(choic);
+                else
+                    FirstWord[c] = Char.Parse(choic);
             }
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < length; i++)
             {
                 pass += FirstWord[i];
             }

@@ -27,7 +27,7 @@ namespace PasswordGenerator
         bool prompt = false;
         int size=4;
         string str = "";
-
+        bool check = false;
         /// <summary>
         /// Выбор типа данных для ввода подсказки
         /// </summary>
@@ -86,9 +86,13 @@ namespace PasswordGenerator
             Cipher ci = new Cipher();
             str = textBox.Text;
             int change = Convert.ToInt32(slider.Content); 
-            ci.cryptic(str, change);
+            ci.cryptic(str, change,size,check);
             textBlock.Text = ci.cryp();
         }
 
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            check = true;
+        }
     }
 }

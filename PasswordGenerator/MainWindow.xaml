@@ -35,5 +35,6 @@
                HorizontalAlignment="Center"  FontWeight="DemiBold"
                Margin="290,30,473.6,0" Name="slider"
                VerticalAlignment="Top" Height="25" Width="30"/>
+        <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Margin="385,126,0,0" VerticalAlignment="Top" Checked="checkBox_Checked" />
     </Grid>
 </Window>
