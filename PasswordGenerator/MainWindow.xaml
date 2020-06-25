@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="500">
     <Grid Background="Khaki">
+        <Label Content="Number of characters to change:" Margin="10,43,295.6,192.4" HorizontalAlignment="Center" Width="188"></Label>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="10,147,0,0" PreviewTextInput="Text_prompt"
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="310"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="35"
@@ -34,11 +35,11 @@
                 <CheckBox Content="!"  Checked="Chaptter9" Unchecked="UnChaptter9"></CheckBox>
                 <CheckBox Content="+"  Checked="Chaptter3" Unchecked="UnChaptter3"></CheckBox>
                 <CheckBox Content="="  Checked="Chaptter8" Unchecked="UnChaptter8"></CheckBox>
-                <CheckBox Content="-"  Checked="Chaptter5" Unchecked="UnChaptter5"></CheckBox> 
+                <CheckBox Content="-"  Checked="Chaptter5" Unchecked="UnChaptter5"></CheckBox>
                 <CheckBox Content="*"  Checked="Chaptter4" Unchecked="UnChaptter4"></CheckBox>
                 <CheckBox Content="$"  Checked="Chaptter6" Unchecked="UnChaptter6"></CheckBox>
                 <CheckBox Content="@"  Checked="Chaptter7" Unchecked="UnChaptter7"></CheckBox>
-                
+
             </MenuItem>
         </Menu>
         <Slider Grid.Column="0" 
@@ -49,7 +50,7 @@
                 VerticalAlignment="Center" Name="slValue" Margin="10,83,173.6,152.4" Height="35"  />
         <Label Content="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" 
                HorizontalAlignment="Center"  FontWeight="DemiBold"
-               Margin="292,53,173.6,0" Name="slider"
+               Margin="292,49,173.6,0" Name="slider"
                VerticalAlignment="Top" Height="25" Width="28"/>
         <CheckBox x:Name="checkBox" Content="Shuffle characters" HorizontalAlignment="Left"
                   Margin="10,118,0,0" VerticalAlignment="Top" Checked="checkBox_Checked"  Unchecked="checkBox_UNChecked"/>

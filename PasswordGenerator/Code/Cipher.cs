@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,8 +24,20 @@ namespace PasswordGenerator
                         "16","17","18","19","1a" };
         string pass = "";
         int flag;
-        public int seach(string ch)
+        public int seach(string ch, string ch1,string ch0)
         { int pos=0;
+
+            try { Convert.ToInt32(ch1); } catch { ch1 = ""; }
+            try { Convert.ToInt32(ch0); } catch { ch0 = ""; }
+             if (ch0 != "")
+            {
+                ch = ch + ch0;
+            }
+            else if (ch1!="")
+            {
+                ch = ch + ch1;
+            }
+            
             for (int i = 0; i < 25; i++)
             {
                 if (ch == letter[i])
@@ -54,6 +67,7 @@ namespace PasswordGenerator
             Random rand = new Random();
             char[] FirstWord = str.ToArray(), TwoWord = str.ToArray();
             int length = str.Length;
+            int num=0,num0=0 ;
             // настройка длины пароля
             if (length < size)
             {
@@ -90,7 +104,11 @@ namespace PasswordGenerator
             {
                 string choic = "";
                 int c = rand.Next(0, length - 1);
-                int pos = seach(FirstWord[c].ToString());
+                if (c < length)
+                    num = c + 1;
+                if (c > 0)
+                    num0 = c - 1;
+                int pos = seach(FirstWord[c].ToString(), FirstWord[num].ToString(), FirstWord[num0].ToString());
                 do
                 {
                     int t = rand.Next(1, 3);
